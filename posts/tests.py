@@ -15,7 +15,7 @@ class PostTests(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code,200)
 
-    def test_url_available_by_name(self):
+    '''def test_url_available_by_name(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code,200)
 
@@ -25,6 +25,12 @@ class PostTests(TestCase):
 
     def test_template_content(self):
         response =self.client.get(reverse('home'))
-        self.assertContains(response,"This is a text!")
+        self.assertContains(response,"This is a text!")'''
+    
 
 # Create your tests here.
+    def test_homepage(self):
+        response =self.client.get(reverse('home'))
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'home.html')
+        self.assertContains(response,"This is a text!")
